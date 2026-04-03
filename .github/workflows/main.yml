@@ -1,18 +1,9 @@
 name: CI Pipeline
- 
-on:
-  push:
-  pull_request:
- 
-jobs:
-  build:
-    runs-on: ubuntu-latest
- 
-    name: CI Pipeline
 
 on:
   push:
   pull_request:
+  workflow_dispatch:  # optional
 
 jobs:
   build:
@@ -25,7 +16,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: 3.10  # more stable than 3.12
+        python-version: 3.10
 
     - name: Install dependencies
       run: |
@@ -34,7 +25,7 @@ jobs:
 
     - name: Run tests
       run: |
-        pytest -v tests/  # make sure your tests are inside 'tests/' folder
+        pytest -v tests/  # assumes tests are in 'tests/' folder
 
     - name: Build Docker Image
       run: |
