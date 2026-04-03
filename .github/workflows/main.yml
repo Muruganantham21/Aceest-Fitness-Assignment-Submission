@@ -3,7 +3,7 @@ name: CI Pipeline
 on:
   push:
   pull_request:
-  workflow_dispatch:  # optional
+  workflow_dispatch:
 
 jobs:
   build:
@@ -25,7 +25,7 @@ jobs:
 
     - name: Run tests
       run: |
-        pytest -v tests/  # assumes tests are in 'tests/' folder
+        pytest -v tests/
 
     - name: Build Docker Image
       run: |
