@@ -32,7 +32,7 @@ jobs:
 
         pip install flask pytest
         pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install -r requirement.txt
  
     - name: Run tests
 
