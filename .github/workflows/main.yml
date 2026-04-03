@@ -1,40 +1,31 @@
 name: CI Pipeline
-
+ 
 on:
   push:
   pull_request:
-
+ 
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    env:
-      # Opt-in to Node.js 24 for any JS-based actions
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
+ 
     steps:
-    # 1️⃣ Checkout repository
     - name: Checkout code
       uses: actions/checkout@v3
-
-    # 2️⃣ Set up Python
+ 
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.10'
-
-    # 3️⃣ Install Python dependencies
+        python-version: 3.12
+ 
     - name: Install dependencies
       run: |
-        pip install --upgrade pip
-        pip install flask pytest
-
-    # 4️⃣ Run tests (look in 'tests/' folder)
+        pip install -r requirements.txt
+ 
     - name: Run tests
       run: |
-        pytest tests/
-
-    # 5️⃣ Build Docker image
+        pytest
+ 
     - name: Build Docker Image
       run: |
-        docker build -t aceest-gym-app .
+        docker build -t aceest-app .
+ 
