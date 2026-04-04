@@ -22,11 +22,13 @@ ________________________________________
 * Optional Libraries: matplotlib
 ________________________________________
 ## Features
-* User-friendly web interface for gym management
-* Flask route testing using Pytest
-* Dockerized environment for consistent deployment
-* CI/CD pipeline to automate tests and Docker builds
-* Easily extendable for additional gym management features
+*	User Login System (Admin)
+*	Client Management
+*	AI-based Program Generation
+*	Workout Tracking
+*	Membership Tracking
+*	PDF Report Generation
+*	Progress Chart Visualization
 ________________________________________
 ## Project Structure
 ```
@@ -40,6 +42,10 @@ Aceest-Fitness/
 │       └─ main.yml        # GitHub Actions workflow
 ```
 ________________________________________
+## GitHub Repository
+
+
+
 ## Setup Instructions
 Prerequisites
 ```
