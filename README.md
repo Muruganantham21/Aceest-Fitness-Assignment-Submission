@@ -1,4 +1,4 @@
-# Aceest Fitness App
+## Aceest Fitness App
 ________________________________________
 ## Project Overview
 Aceest Fitness is a Flask-based web application designed for managing gym operations efficiently.
@@ -43,9 +43,8 @@ Aceest-Fitness/
 ```
 ________________________________________
 ## GitHub Repository
-
-
-
+https://github.com/Muruganantham21/Aceest-Fitness-Assignment-Submission
+________________________________________
 ## Setup Instructions
 Prerequisites
 ```
@@ -55,12 +54,12 @@ Prerequisites
 •	GitHub account (for CI/CD)
 ```
 ________________________________________
-Local Setup
+Local Setup Instructions
 
 Clone the repository:
 ```
-git clone <repository-url>
-cd Aceest-Fitness
+git clone https://github.com/Muruganantham21/Aceest-Fitness-Assignment-Submission
+cd Aceest-Fitness-Assignment-Submission
 ```
 ________________________________________
 Create Virtual Environment (Optional)
@@ -82,8 +81,16 @@ ________________________________________
 ## Running Locally
 ```
 python app.py
+```
+## Access Application
+```
 Open your browser at:
 http://127.0.0.1:5000
+```
+## Default Login
+```
+Username: admin
+Password: admin
 ```
 ________________________________________
 ## Running Tests
@@ -121,6 +128,20 @@ Steps in Workflow
 4.	Run tests (pytest -v test_app.py)
 5.	Build Docker image
 ________________________________________
+## Jenkins Integration
+Jenkins is used as a build automation tool.
+Functionality:
+* Executes build pipeline
+* Runs tests
+* Validates application
+Note:
+Due to plugin/network constraints, Jenkins was configured using a simplified build approach, ensuring successful build execution.
+________________________________________
+## CI/CD Workflow
+```
+GitHub Push → GitHub Actions → Test → Docker Build → Jenkins Build
+```
+________________________________________
 ## Key Learning Outcomes
 * Built a Flask web application and structured routes effectively
 * Used Pytest for testing Flask routes
@@ -142,6 +163,6 @@ This project provides a strong foundation for building scalable and maintainable
 ________________________________________
 
 ## Author
-Muruganantham
+Muruganantham K
 
 Master’s in Software Engineering, BITS Pilani
