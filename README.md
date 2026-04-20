@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## Aceest Fitness App
 ________________________________________
 ## Project Overview
