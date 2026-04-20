@@ -1,120 +1,168 @@
-Aceest Fitness App
-Overview
-Aceest Fitness is a Flask-based web application for gym management. This project includes a Dockerized setup and a CI/CD pipeline using GitHub Actions to automate testing and Docker image building.
-Table of Contents
-•	Prerequisites 
-•	Project Structure 
-•	Setup Instructions 
-•	Running Locally 
-•	Running Tests 
-•	Docker Setup 
-•	CI/CD with GitHub Actions 
-•	Common Issues & Fixes 
-Prerequisites
-•	Python 3.11+ 
-•	Docker Desktop 
-•	Git 
-•	GitHub account (for CI/CD) 
-Project Structure
+## Aceest Fitness App
+________________________________________
+## Project Overview
+Aceest Fitness is a Flask-based web application designed for managing gym operations efficiently.
+It tracks members, workouts, and general gym management tasks.
+The application is Dockerized for consistent deployment and integrates a CI/CD pipeline using GitHub Actions for automated testing and Docker image building.
+________________________________________
+## Objective
+The main objective is to provide a lightweight, maintainable, and testable web application for gym management.
+
+Key Goals:
+* Simplify gym operations and member tracking
+* Implement a containerized setup for consistent environments
+* Automate testing and deployment using CI/CD
+________________________________________
+## Tech Stack
+* Backend: Python 3.11, Flask
+* Testing: Pytest
+* Containerization: Docker
+* CI/CD: GitHub Actions
+* Version Control: Git & GitHub
+* Optional Libraries: matplotlib
+________________________________________
+## Features
+*	User Login System (Admin)
+*	Client Management
+*	AI-based Program Generation
+*	Workout Tracking
+*	Membership Tracking
+*	PDF Report Generation
+*	Progress Chart Visualization
+________________________________________
+## Project Structure
+```
 Aceest-Fitness/
-├─ app.py                   # Main Flask app
-├─ Dockerfile               # Docker setup
-├─ requirements.txt         # Python dependencies
-├─ test_app.py              # Pytest test file
+├─ app.py                  # Main Flask app
+├─ Dockerfile              # Docker setup
+├─ requirements.txt        # Python dependencies
+├─ test_app.py             # Pytest test file
 ├─ .github/
 │   └─ workflows/
-│       └─ main.yml         # GitHub Actions CI workflow
-Setup Instructions
-1.	Clone the repository: 
-git clone <repository-url>
-cd Aceest-Fitness
-2.	Create virtual environment (optional but recommended): 
+│       └─ main.yml        # GitHub Actions workflow
+```
+________________________________________
+## GitHub Repository
+https://github.com/Muruganantham21/Aceest-Fitness-Assignment-Submission
+________________________________________
+## Setup Instructions
+Prerequisites
+```
+•	Python 3.11+
+•	Docker Desktop
+•	Git
+•	GitHub account (for CI/CD)
+```
+________________________________________
+Local Setup Instructions
+
+Clone the repository:
+```
+git clone https://github.com/Muruganantham21/Aceest-Fitness-Assignment-Submission
+cd Aceest-Fitness-Assignment-Submission
+```
+________________________________________
+Create Virtual Environment (Optional)
+```
 python -m venv venv
-source venv/bin/activate   # Linux/macOS
-venv\Scripts\activate      # Windows
-3.	Install Python dependencies: 
+Activate:
+•	Windows:
+venv\Scripts\activate
+•	Linux/macOS:
+source venv/bin/activate
+```
+________________________________________
+Install Dependencies
+```
 pip install --upgrade pip
 pip install -r requirements.txt
-Running Locally
-1.	Run the Flask app: 
+```
+________________________________________
+## Running Locally
+```
 python app.py
-2.	Open your browser at http://127.0.0.1:5000 
-Running Tests
-Pytest is used for testing the Flask routes.
-1.	Run tests locally: 
+```
+## Access Application
+```
+Open your browser at:
+http://127.0.0.1:5000
+```
+## Default Login
+```
+Username: admin
+Password: admin
+```
+________________________________________
+## Running Tests
+```
 pytest -v test_app.py
-Make sure all required modules (like matplotlib) are installed. Missing modules will cause ModuleNotFoundError.
-Example test in test_app.py:
-from app import app
-
-def test_login_page():
-    client = app.test_client()
-    response = client.get("/")
-    assert response.status_code == 200
-Docker Setup
-1.	Dockerfile: 
-FROM python:3.11-slim
-
-WORKDIR /app
-COPY . .
-
-RUN pip install -r requirements.txt
-
-EXPOSE 5000
-
-CMD ["python", "app.py"]
-2.	Build Docker image: 
+Ensure required modules (like matplotlib) are installed.
+```
+________________________________________
+## Docker Setup
+Build Docker Image
+```
 docker build -t aceest-app .
-3.	Run Docker container: 
+```
+Run Docker Container
+```
 docker run -p 5000:5000 aceest-app
-4.	Access the app at http://localhost:5000 
-CI/CD with GitHub Actions
-1.	Workflow YAML (.github/workflows/main.yml): 
-name: CI Pipeline
+Access the application at:
+http://localhost:5000
+```
+________________________________________
+## CI/CD with GitHub Actions
+The pipeline is triggered on every:
+* push
+* pull request
 
-on:
-  push:
-  pull_request:
-  workflow_dispatch:
+Workflow File
+```
+.github/workflows/main.yml
+```
+Steps in Workflow
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+1.	Checkout code
+2.	Set up Python 3.11
+3.	Install dependencies
+4.	Run tests (pytest -v test_app.py)
+5.	Build Docker image
+________________________________________
+## Jenkins Integration
+Jenkins is used as a build automation tool.
+Functionality:
+* Executes build pipeline
+* Runs tests
+* Validates application
+Note:
+Due to plugin/network constraints, Jenkins was configured using a simplified build approach, ensuring successful build execution.
+________________________________________
+## CI/CD Workflow
+```
+GitHub Push → GitHub Actions → Test → Docker Build → Jenkins Build
+```
+________________________________________
+## Key Learning Outcomes
+* Built a Flask web application and structured routes effectively
+* Used Pytest for testing Flask routes
+* Implemented Docker containerization for consistent environments
+* Set up CI/CD pipelines in GitHub Actions
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+Resolved real-world issues:
+* ModuleNotFoundError
+* Test discovery problems
+* Docker host binding issues
+________________________________________
+## Conclusion
+Aceest Fitness demonstrates a full-cycle application development process, including:
+```
+Development → Testing → Containerization → CI/CD Automation
+```
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.11
+This project provides a strong foundation for building scalable and maintainable web applications.
+________________________________________
 
-    - name: Install dependencies
-      run: |
-        pip install --upgrade pip
-        pip install -r requirements.txt
+## Author
+Muruganantham K
 
-    - name: Run tests
-      run: |
-        pytest -v test_app.py
-
-    - name: Build Docker Image
-      run: |
-        docker build -t aceest-app .
-2.	Notes: 
-o	The workflow installs Python 3.11, installs dependencies, runs tests, and builds a Docker image. 
-o	pytest -v test_app.py ensures tests run even if the file is in the project root. 
-Common Issues & Fixes
-Issue	Cause	Solution
-ModuleNotFoundError: No module named 'matplotlib'	matplotlib not in requirements.txt	Add matplotlib to requirements.txt
-collected 0 items or ImportError while importing test module	pytest can’t find test files	Ensure test files start with test_ and are in the right directory, or point pytest to the correct file/folder
-Docker not accessible on host port	Flask app listening only on 127.0.0.1	In app.py, use app.run(host="0.0.0.0", port=5000)
-GitHub Actions Node.js warning	Deprecated Node.js 20 actions	Optional: set FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true in workflow environment
-Exit code 1 in CI	Tests failing or missing dependencies	Ensure requirements.txt is complete, tests pass locally
-References
-•	Flask Documentation 
-•	Pytest Documentation 
-•	Docker Documentation 
-•	GitHub Actions 
-
+Master’s in Software Engineering, BITS Pilani
