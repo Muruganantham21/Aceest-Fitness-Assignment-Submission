@@ -165,12 +165,7 @@ Application deployed using container image on cloud platform:
 * Deployment Method: Docker Image
 * Public URL available
  
-The same Docker image can be deployed to:
- 
-* AWS (EKS / EC2)
-* Azure (AKS)
-* GCP (GKE)
- 
+
 ## Architecture Flow
 ```text
 Developer → GitHub → GitHub Actions → Docker Hub → Cloud (Render)
